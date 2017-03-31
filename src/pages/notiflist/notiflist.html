@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+   <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Notifications</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let news of data" text-wrap>
+      <ion-thumbnail item-left>
+        <img src="{{news['imageSrc']}}">
+      </ion-thumbnail>
+      <h2>{{news["header"]}}</h2>
+      <p>{{news["description"]}}</p>
+      <button ion-button clear item-right (click)='goToDetail(news);'>View</button>
+    </ion-item>
+  </ion-list>
+  <ion-fab right bottom>
+    <button ion-fab color="danger" (click)='addPost(addpage);'><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

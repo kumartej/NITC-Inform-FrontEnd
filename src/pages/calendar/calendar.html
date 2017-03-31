@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+  <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Calendar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      Create event
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        <label>Title : </label>
+        {{title}}
+      </p>
+      <p>
+        <label>Start date : </label>
+        {{startDate | date:'dd/MM/yy HH:mm'}}
+      </p>
+      <p>
+        <label>End date : </label>
+        {{endDate | date:'dd/MM/yy HH:mm'}}
+      </p>
+      <p>
+        <label>Note : </label>
+        {{note}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
