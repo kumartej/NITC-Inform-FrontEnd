@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {Toast, NavController} from 'ionic-angular';
+import { NavController} from 'ionic-angular';
 import {Calendar} from 'ionic-native';
 /*
   Generated class for the Calendar page.

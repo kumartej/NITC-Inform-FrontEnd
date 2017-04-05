@@ -8,6 +8,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { LoginPage } from '../pages/login/login';
 import { NotiflistPage } from '../pages/notiflist/notiflist';
 import { TabsPage } from '../pages/tabs/tabs';
+import * as firebase from 'firebase'
 
 @Component({
   templateUrl: 'app.html'
@@ -19,12 +20,16 @@ export class MyApp {
   rootPage = TabsPage;
   pages: Array<{title: string, component: any}>;
 
-  constructor(
-    public platform: Platform,
-    public menu: MenuController,
-    public statusBar: StatusBar,
-    public splashScreen: SplashScreen
-  ) {
+  constructor( public platform: Platform, public menu: MenuController, public statusBar: StatusBar, public splashScreen: SplashScreen ) {
+    var config = {
+      apiKey: "AIzaSyAI8FYxeIHmNtc_wOrT2om2Y2pTVt84okc",
+      authDomain: "ionicfirebase-9f74c.firebaseapp.com",
+      databaseURL: "https://ionicfirebase-9f74c.firebaseio.com",
+      storageBucket: "ionicfirebase-9f74c.appspot.com",
+      messagingSenderId: "551753528694"
+    };
+    firebase.initializeApp(config);
+
     this.initializeApp();
 
     // set our app's pages

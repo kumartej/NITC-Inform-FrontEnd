@@ -11,7 +11,9 @@ import { CalendarPage } from '../pages/calendar/calendar';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AddsubPage } from '../pages/addsub/addsub';
 import { AddpostPage } from '../pages/addpost/addpost';
-
+import { UserService } from '../providers/user-service';
+import { HTTP } from '@ionic-native/http';
+import { SubscribePage } from '../pages/subscribe/subscribe';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { AddpostPage } from '../pages/addpost/addpost';
     DetailPage,
     CalendarPage,
    NotiflistPage,
-   AddpostPage
+   AddpostPage,
+   SubscribePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -38,12 +41,15 @@ import { AddpostPage } from '../pages/addpost/addpost';
    TabsPage,
     LoginPage,
     NotiflistPage,
-    AddpostPage
+    AddpostPage,
+    SubscribePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserService,
+    HTTP
   ]
 })
 export class AppModule {}
