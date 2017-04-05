@@ -13,6 +13,7 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class DetailPage {
 
+<<<<<<< HEAD
 	public header:any
 	public description:any
 	public imageSrc:any
@@ -22,6 +23,9 @@ export class DetailPage {
   	this.description = navParams.get('description');
   	this.imageSrc = navParams.get('imageSrc');
   }
+=======
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+>>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailPage');

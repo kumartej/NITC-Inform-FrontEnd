@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
   "name": "myapp",
   "app_id": "c9e97c4e",
+=======
+  "name": "myproj",
+  "app_id": "",
+>>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
   "v2": true,
   "typescript": true
 }

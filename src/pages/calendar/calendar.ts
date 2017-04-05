@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 import {Component} from "@angular/core";
 import { NavController} from 'ionic-angular';
 import {Calendar} from 'ionic-native';
+=======
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import {Calendar} from '@ionic-native/calendar';
+
+>>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
 /*
   Generated class for the Calendar page.
 
@@ -11,6 +18,7 @@ import {Calendar} from 'ionic-native';
   selector: 'page-calendar',
   templateUrl: 'calendar.html'
 })
+<<<<<<< HEAD
 
 export class CalendarPage {
   public title: string;
@@ -40,3 +48,23 @@ export class CalendarPage {
   }
 }
  
+=======
+export class CalendarPage {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private calendar: Calendar) { 
+  	this.calendar.createCalendar('MyCalendar').then(
+	  (msg) => { console.log(msg); },
+	  (err) => { console.log(err); }
+	);
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad CalendarPage');
+  }
+
+  addToCalendar(){
+  	console.log("addToCalendar");
+  }
+
+}
+>>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93

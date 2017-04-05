@@ -21,6 +21,7 @@
     "@angular/platform-server": "2.4.8",
     "@ionic-native/calendar": "^3.4.4",
     "@ionic-native/core": "3.1.0",
+<<<<<<< HEAD
     "@ionic-native/file": "^3.4.4",
     "@ionic-native/file-chooser": "^3.4.4",
     "@ionic-native/http": "^3.4.4",
@@ -33,6 +34,12 @@
     "ionic-angular": "2.3.0",
     "ionic-native": "^2.9.0",
     "ionic2-calendar": "^0.2.4",
+=======
+    "@ionic-native/splash-screen": "3.1.0",
+    "@ionic-native/status-bar": "3.1.0",
+    "@ionic/storage": "2.0.0",
+    "ionic-angular": "2.3.0",
+>>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
     "ionicons": "3.0.0",
     "rxjs": "5.0.1",
     "sw-toolbox": "3.4.0",
@@ -43,6 +50,7 @@
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
+<<<<<<< HEAD
     "cordova-plugin-console",
     "cordova-plugin-device",
     "cordova-plugin-splashscreen",
@@ -52,4 +60,15 @@
   ],
   "cordovaPlatforms": [],
   "description": "myapp: An Ionic project"
+=======
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-console",
+    "cordova-plugin-statusbar",
+    "cordova-plugin-device",
+    "ionic-plugin-keyboard"
+  ],
+  "cordovaPlatforms": [],
+  "description": "myproj: An Ionic project"
+>>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
 }

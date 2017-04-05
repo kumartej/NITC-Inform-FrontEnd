@@ -8,7 +8,10 @@ import { SettingsPage } from '../pages/settings/settings';
 import { LoginPage } from '../pages/login/login';
 import { NotiflistPage } from '../pages/notiflist/notiflist';
 import { TabsPage } from '../pages/tabs/tabs';
+<<<<<<< HEAD
 import * as firebase from 'firebase'
+=======
+>>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
 
 @Component({
   templateUrl: 'app.html'
@@ -20,6 +23,7 @@ export class MyApp {
   rootPage = TabsPage;
   pages: Array<{title: string, component: any}>;
 
+<<<<<<< HEAD
   constructor( public platform: Platform, public menu: MenuController, public statusBar: StatusBar, public splashScreen: SplashScreen ) {
     var config = {
       apiKey: "AIzaSyAI8FYxeIHmNtc_wOrT2om2Y2pTVt84okc",
@@ -30,6 +34,14 @@ export class MyApp {
     };
     firebase.initializeApp(config);
 
+=======
+  constructor(
+    public platform: Platform,
+    public menu: MenuController,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen
+  ) {
+>>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
     this.initializeApp();
 
     // set our app's pages
