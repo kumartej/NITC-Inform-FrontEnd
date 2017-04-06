@@ -13,23 +13,16 @@
 <ion-list>
 
   <ion-item>
-    <ion-input type="text" placeholder="Username"></ion-input>
+    <ion-input type="text" placeholder="Username" [(ngModel)]="email"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input type="password" placeholder="Password"></ion-input>
+    <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
   </ion-item>
 
 </ion-list>
 
 <div padding>
-<<<<<<< HEAD
-  <button block (click)="submitLogin()">Sign In</button>
-</div>
-<div padding>
-  <button block (click)="getDummies()">getDummies</button>
-=======
-  <button block>Sign In</button>
->>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
+  <button ion-button (click)="submitLogin()">Sign In</button>
 </div>
 </ion-content>

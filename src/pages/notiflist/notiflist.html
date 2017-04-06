@@ -14,13 +14,10 @@
       </ion-thumbnail>
       <h2>{{news["header"]}}</h2>
       <p>{{news["description"]}}</p>
-<<<<<<< HEAD
       <button ion-button clear item-right (click)='goToDetail(news);'>View</button>
-=======
-      <button ion-button clear item-right>View</button>
->>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
     </ion-item>
   </ion-list>
+  <button ion-button full (click)='loadMore()' >Load More</button>
   <ion-fab right bottom>
     <button ion-fab color="danger" (click)='addPost(addpage);'><ion-icon name="add"></ion-icon></button>
   </ion-fab>

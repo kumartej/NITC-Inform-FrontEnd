@@ -3,6 +3,7 @@ import { ModalController } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
 import {DetailPage} from '../detail/detail';
 import {AddpostPage} from '../addpost/addpost';
+import { UserService } from '../../providers/user-service';
 
 /*
   Generated class for the Notiflist page.
@@ -12,15 +13,13 @@ import {AddpostPage} from '../addpost/addpost';
 */
 @Component({
   selector: 'page-notiflist',
-  templateUrl: 'notiflist.html'
+  templateUrl: 'notiflist.html',
+  providers: [ UserService ]
 })
 export class NotiflistPage {
-<<<<<<< HEAD
   detailpage = DetailPage;
-=======
-  detailPage = DetailPage;
->>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
   addpage = AddpostPage;
+  start = 0;
   public data =  [
   {
     header:"header1 ",
@@ -42,15 +41,19 @@ export class NotiflistPage {
 
   }
   ];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
-  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public userService: UserService) {
+    this.userService.readPosts('11',0).then(data=>{
+      for(var i in data['data']){
+        console.log(data['data'][i].header)
+        this.data.push({header:data['data'][i].header,description:data['data'][i].description,imageSrc:"https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg"});
+      }
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotiflistPage');
   }
 
-<<<<<<< HEAD
   goToDetail(news){
     console.log(news['header']);
     this.navCtrl.push(this.detailpage,{
@@ -58,14 +61,20 @@ export class NotiflistPage {
       description:news['description'],
       imageSrc:news['imageSrc']
     });
-=======
-  goToDetail(){
-    this.navCtrl.push(DetailPage);
->>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
 
   }
   addPost(addpage){
     this.navCtrl.push(addpage)
+  }
+
+  loadMore(){
+    this.start=this.start+10;
+    this.userService.readPosts('11',this.start).then(data=>{
+      for(var i in data['data']){
+        console.log(data['data'][i].header)
+        this.data.push({header:data['data'][i].header,description:data['data'][i].description,imageSrc:"https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg"});
+      }
+    })
   }
 
 }

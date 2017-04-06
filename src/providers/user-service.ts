@@ -48,17 +48,32 @@ export class UserService {
 		return this.fireAuth.signOut();
 	}
 
-	writePosts(header:string, description: string, postedby: string){
+	writePosts(header:string, description: string, postedby: string,myTime:string,venue:string){
 		var postsref = this.firedatabase.ref('posts/');
-		return postsref.push().set({
+		var key = postsref.push().getKey();
+		postsref.child(key).set({
 			header: header,
 			description: description,
-			postedby: postedby
+			postedby: postedby,
+			time:myTime,
+			venue:venue
 		});
-	}
+		console.log(key);
+		return new Promise(resolve =>{
+			this.http.get('http://192.168.40.177:3000/postEvent?key='+key)
+				.subscribe(data =>{
+					resolve(data.json());
+				});
+		});
+	}	
 
-	readPosts(){
-		var ref=this.firedatabase.ref('posts/');
-		return ref.orderByKey();
+	readPosts(id:string,start:any){
+		return new Promise(resolve =>{
+			this.http.get('http://192.168.40.177:3000/posts?id='+id+'&start='+start)
+				.subscribe(data =>{
+					console.log(data.json())
+					resolve(data.json());
+				});
+		});
 	}
 }

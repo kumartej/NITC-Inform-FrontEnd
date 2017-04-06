@@ -15,12 +15,13 @@
 <ion-slides>
 	<ion-slide *ngFor="let field of subArray">
 		<ion-item *ngFor="let dept of field">
-			<button ion-button color="dark" ng-click="color=green" full (click)='goToSlide(dept[1],dept[0])'>{{dept[0]}}</button>
+			<button ion-button color="dark" full (click)='goToSlide(dept[1])'>{{dept[0]}}</button>
 		</ion-item>
+
 
 	</ion-slide>
 </ion-slides>
-  <p>you selected {{myColor}}</p>
+
   <button ion-button ion-left color="primary"  (click)="popSlide()">Back</button>
   <button ion-button ion-right color="primary"  (click)="nextSlide()">Next</button>
 

@@ -1,5 +1,5 @@
 {
-  "globalDependencies": {
-    "cordova": "registry:dt/cordova#0.0.0+20160819210047"
+  "dependencies": {
+    "firebase": "registry:npm/firebase#3.0.5+20160723033700"
   }
 }

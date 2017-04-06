@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { UserService } from '../../providers/user-service';
@@ -44,19 +43,4 @@ export class LoginPage {
   getDummies(){
   	this.userService.getDummy();
   }
-=======
-
-import { NavController } from 'ionic-angular';
-
-@Component({
-  selector: 'page-login',
-  templateUrl: 'login.html'
-})
-export class LoginPage {
-
-  constructor(public navCtrl: NavController) {
-
-  }
-
->>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
 }

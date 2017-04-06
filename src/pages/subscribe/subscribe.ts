@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { ModalController } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { UserService } from '../../providers/user-service';
+import { LoginPage } from '../login/login';
 /*
   Generated class for the Subscribe page.
 
@@ -17,11 +19,12 @@ import { UserService } from '../../providers/user-service';
 export class SubscribePage {
    
    public subArray = [];
-   myColor: string;
    public i=0;
+   public checkLogin=0;
+   public checkLeaf=0;
    
   @ViewChild(Slides) slides: Slides;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userService: UserService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userService: UserService,public modalCtrl: ModalController) {
 		this.userService.getNextLevel('1')
 		.then(data => {
 			console.log(data);
@@ -38,27 +41,44 @@ export class SubscribePage {
   }
     
    
-    goToSlide(value,value2) {
+    goToSlide(value) {
       if(this.i==1){
         this.subArray.pop();
       }
-     	console.log(value);
+      console.log(value);
+      if(value == 'login')
+        this.checkLogin=1;
+      else if(value == 'leaf')
+        this.checkLeaf=1;
+      else{
+        this.checkLeaf=0;
+        this.checkLogin=0;
  			this.userService.getNextLevel(value)
 		    .then(data => {
   				console.log(data);
   				this.subArray.push(data['data']);
   			});
       this.i=1;
-      this.myColor=value2;
-       
+     }
     }
 
     nextSlide(){
+      if(this.checkLogin == 1){
+        let modal = this.modalCtrl.create(LoginPage);
+         modal.present();
+         this.checkLogin=0;
+      }
+      else if(this.checkLeaf == 1){
+        this.navCtrl.pop();
+         this.checkLeaf=0;
+      }
+      else{
       this.slides.lockSwipeToNext(false);
       var cIndex = this.slides.getActiveIndex();
       this.slides.slideTo(cIndex+1,500);
       this.i=0;
       this.slides.lockSwipeToNext(true);
+      }
     }
     
     popSlide(){

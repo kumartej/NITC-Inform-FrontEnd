@@ -11,13 +11,9 @@ import { CalendarPage } from '../pages/calendar/calendar';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AddsubPage } from '../pages/addsub/addsub';
 import { AddpostPage } from '../pages/addpost/addpost';
-<<<<<<< HEAD
 import { UserService } from '../providers/user-service';
 import { HTTP } from '@ionic-native/http';
 import { SubscribePage } from '../pages/subscribe/subscribe';
-=======
-
->>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
 
 @NgModule({
   declarations: [
@@ -29,12 +25,8 @@ import { SubscribePage } from '../pages/subscribe/subscribe';
     DetailPage,
     CalendarPage,
    NotiflistPage,
-<<<<<<< HEAD
    AddpostPage,
    SubscribePage
-=======
-   AddpostPage
->>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -49,23 +41,15 @@ import { SubscribePage } from '../pages/subscribe/subscribe';
    TabsPage,
     LoginPage,
     NotiflistPage,
-<<<<<<< HEAD
     AddpostPage,
     SubscribePage
-=======
-    AddpostPage
->>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
   ],
   providers: [
     StatusBar,
     SplashScreen,
-<<<<<<< HEAD
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserService,
     HTTP
-=======
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
->>>>>>> c09b1e8d18c98acfda7e980fa8155bdecde9bd93
   ]
 })
 export class AppModule {}
