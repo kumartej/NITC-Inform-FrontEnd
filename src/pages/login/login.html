@@ -9,7 +9,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content *ngIf="!loginStatus" padding>
 <ion-list>
 
   <ion-item>
@@ -25,4 +25,8 @@
 <div padding>
   <button ion-button (click)="submitLogin()">Sign In</button>
 </div>
+</ion-content>
+<ion-content *ngIf="loginStatus" padding>
+ <button ion-button (click)="submitLogout()">Log Out</button>
+  
 </ion-content>

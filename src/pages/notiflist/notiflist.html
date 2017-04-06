@@ -18,7 +18,7 @@
     </ion-item>
   </ion-list>
   <button ion-button full (click)='loadMore()' >Load More</button>
-  <ion-fab right bottom>
+  <ion-fab *ngIf="loginStatus" right bottom>
     <button ion-fab color="danger" (click)='addPost(addpage);'><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 </ion-content>

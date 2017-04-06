@@ -8,7 +8,8 @@ import { SettingsPage } from '../pages/settings/settings';
 import { LoginPage } from '../pages/login/login';
 import { NotiflistPage } from '../pages/notiflist/notiflist';
 import { TabsPage } from '../pages/tabs/tabs';
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
+import { Storage } from '@ionic/storage';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +21,7 @@ export class MyApp {
   rootPage = TabsPage;
   pages: Array<{title: string, component: any}>;
 
-  constructor( public platform: Platform, public menu: MenuController, public statusBar: StatusBar, public splashScreen: SplashScreen ) {
+  constructor( public platform: Platform, public menu: MenuController, public statusBar: StatusBar, public splashScreen: SplashScreen,public storage:Storage ) {
     var config = {
       apiKey: "AIzaSyAI8FYxeIHmNtc_wOrT2om2Y2pTVt84okc",
       authDomain: "ionicfirebase-9f74c.firebaseapp.com",
@@ -38,7 +39,20 @@ export class MyApp {
       { title: 'login', component: LoginPage },
       { title: 'settings',component:SettingsPage}
     ];
+    this.storage.ready().then(() => {
+
+       // set a key/value
+       this.storage.set('email','user@xyz.com');
+       this.storage.set('login', false);
+
+       // Or to get a key/value pair
+       this.storage.get('login').then((val) => {
+         console.log('Your age is', val);
+       })
+     });
+
   }
+
 
   initializeApp() {
     this.platform.ready().then(() => {

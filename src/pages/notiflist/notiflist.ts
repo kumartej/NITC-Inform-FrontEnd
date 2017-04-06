@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import {DetailPage} from '../detail/detail';
 import {AddpostPage} from '../addpost/addpost';
 import { UserService } from '../../providers/user-service';
+import { Storage } from '@ionic/storage';
 
 /*
   Generated class for the Notiflist page.
@@ -20,34 +21,21 @@ export class NotiflistPage {
   detailpage = DetailPage;
   addpage = AddpostPage;
   start = 0;
-  public data =  [
-  {
-    header:"header1 ",
-    description:"des1",
-    imageSrc:"https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg"
-
-  },
-  {
-    header:"header2 ",
-    description:"des2",
-    imageSrc:"https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg"
-
-
-  },
-  {
-    header:"header2 ",
-    description:"des2",
-    imageSrc:"https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg"
-
-  }
-  ];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public userService: UserService) {
+  loginStatus:boolean;
+  public data =  [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public userService: UserService,public storage:Storage) {
     this.userService.readPosts('11',0).then(data=>{
       for(var i in data['data']){
         console.log(data['data'][i].header)
         this.data.push({header:data['data'][i].header,description:data['data'][i].description,imageSrc:"https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg"});
       }
     });
+    this.storage.ready().then(() => {
+       this.storage.get('login').then((val) => {
+         console.log('log in status', val);
+         this.loginStatus=val;
+       })
+     });
   }
 
   ionViewDidLoad() {

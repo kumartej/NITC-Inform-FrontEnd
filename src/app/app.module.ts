@@ -14,7 +14,7 @@ import { AddpostPage } from '../pages/addpost/addpost';
 import { UserService } from '../providers/user-service';
 import { HTTP } from '@ionic-native/http';
 import { SubscribePage } from '../pages/subscribe/subscribe';
-
+import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [
     MyApp,
@@ -29,7 +29,13 @@ import { SubscribePage } from '../pages/subscribe/subscribe';
    SubscribePage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(
+    {
+      name: 'mydb',
+         driverOrder: ['indexeddb', 'sqlite', 'websql']
+      
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
