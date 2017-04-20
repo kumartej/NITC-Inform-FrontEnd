@@ -17,6 +17,7 @@ export class LoginPage {
 
 	email: string;
   error: string;
+  id:string;
 	password: string;
   public userDetails=[];
   loginStatus:boolean;
@@ -30,6 +31,7 @@ export class LoginPage {
           });
         });
     this.error='';
+    this.id=navParams.get('id');
   }
 
   submitLogin(){
@@ -39,6 +41,13 @@ export class LoginPage {
 
           this.storage.set('email', this.email);
           this.storage.set('login', true);
+          if (this.id=='2' || this.id=='3') {
+            this.storage.set('user',this.id);
+          }
+          else
+          {
+            this.storage.set('user','1');
+          }
 
           // Or to get a key/value pair
           this.storage.get('login').then((val) => {

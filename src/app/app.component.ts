@@ -36,7 +36,6 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Notifications', component: NotiflistPage },
-      { title: 'login', component: LoginPage },
       { title: 'settings',component:SettingsPage}
     ];
     this.storage.ready().then(() => {

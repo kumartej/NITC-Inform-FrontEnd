@@ -6,24 +6,20 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>DEPARTMENT</ion-title>
+    <ion-title>Who are you?</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
-<ion-slides>
-	<ion-slide *ngFor="let field of subArray">
-		<ion-item *ngFor="let dept of field">
-			<button ion-button color="dark" full (click)='goToSlide(dept[1])'>{{dept[0]}}</button>
-		</ion-item>
-
-
-	</ion-slide>
-</ion-slides>
-
-  <button ion-button ion-left color="primary"  (click)="popSlide()">Back</button>
-  <button ion-button ion-right color="primary"  (click)="nextSlide()">Next</button>
-
+<ion-content *ngIf="!loginStatus">
+  <br>
+  <br>
+ <ion-list>
+  <ion-item> <button ion-button block large navPop>Student</button> </ion-item>
+  <ion-item> <button ion-button block large (click)="selectedFac()">Faculty</button> </ion-item>
+  <ion-item> <button ion-button block large (click)="selectedStaff()">Staff</button> </ion-item>
+ </ion-list>
+</ion-content>
+<ion-content *ngIf="loginStatus" padding>
+ <button ion-button (click)="submitLogout()">Log Out</button>
 </ion-content>
 

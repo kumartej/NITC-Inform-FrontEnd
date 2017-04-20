@@ -16,11 +16,17 @@ export class DetailPage {
 	public header:any
 	public description:any
 	public imageSrc:any
+  public venue: any;
+  public posted_by: any;
+  public post_time: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   	this.header = navParams.get('header');
   	this.description = navParams.get('description');
   	this.imageSrc = navParams.get('imageSrc');
+    this.venue = navParams.get('venue'); 
+    this.posted_by = navParams.get('posted_by');
+    this.post_time = navParams.get('post_time');
   }
 
   ionViewDidLoad() {

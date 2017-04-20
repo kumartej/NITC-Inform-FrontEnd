@@ -29,14 +29,22 @@ export class NotiflistPage {
        this.storage.get('user').then((val) => {
          console.log('log in status', val);
          userkey=val;
+         console.log("userKey:::"+userkey);
+        this.userService.readPosts(userkey,0).then(data=>{
+          for(var i in data['data']){
+            console.log(data['data'][i].header)
+            this.data.push({
+              header:data['data'][i].header,
+              description:data['data'][i].description,
+              venue:data['data'][i].venue,
+              posted_by:data['data'][i].posted_by,
+              post_time:data['data'][i].post_time,
+              imageSrc:"https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg"
+            });
+          }
+        });
        })
      });
-    this.userService.readPosts(userkey,0).then(data=>{
-      for(var i in data['data']){
-        console.log(data['data'][i].header)
-        this.data.push({header:data['data'][i].header,description:data['data'][i].description,imageSrc:"https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg"});
-      }
-    });
     this.storage.ready().then(() => {
        this.storage.get('login').then((val) => {
          console.log('log in status', val);
@@ -54,7 +62,10 @@ export class NotiflistPage {
     this.navCtrl.push(this.detailpage,{
       header:news['header'],
       description:news['description'],
-      imageSrc:news['imageSrc']
+      imageSrc:news['imageSrc'],
+      venue:news['venue'],
+      posted_by:news['posted_by'],
+      post_time:news['post_time'],
     });
 
   }
@@ -69,14 +80,15 @@ export class NotiflistPage {
        this.storage.get('user').then((val) => {
          console.log('log in status', val);
          userkey=val;
-       })
+         console.log("userKey"+userkey);
+         this.userService.readPosts(userkey,this.start).then(data=>{
+            for(var i in data['data']){
+              console.log(data['data'][i].header)
+              this.data.push({header:data['data'][i].header,description:data['data'][i].description,imageSrc:"https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg"});
+            }
+          });
+       });
      });
-    this.userService.readPosts(userkey,this.start).then(data=>{
-      for(var i in data['data']){
-        console.log(data['data'][i].header)
-        this.data.push({header:data['data'][i].header,description:data['data'][i].description,imageSrc:"https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg"});
-      }
-    })
   }
 
 }

@@ -15,6 +15,7 @@ import { UserService } from '../providers/user-service';
 import { HTTP } from '@ionic-native/http';
 import { SubscribePage } from '../pages/subscribe/subscribe';
 import { IonicStorageModule } from '@ionic/storage';
+import { NgCalendarModule  } from 'ionic2-calendar';
 @NgModule({
   declarations: [
     MyApp,
@@ -29,6 +30,7 @@ import { IonicStorageModule } from '@ionic/storage';
    SubscribePage
   ],
   imports: [
+    NgCalendarModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(
     {

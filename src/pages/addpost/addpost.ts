@@ -4,6 +4,7 @@ import { ModalController } from 'ionic-angular';
 import { UserService } from '../../providers/user-service';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
 
 //import { UsersService } from '../../providers/users-service';
 /*
@@ -40,16 +41,21 @@ export class AddpostPage {
   }
 
   addPost(){
-      var sum = 0;
+      var sum = 0,check=0;
       for(var i in this.toppings){
         sum+=parseInt(this.toppings[i])
+        check+=1;
       }
+      if(check>1)
+        sum+=1;
        console.log("header:::"+this.header+"description:::"+this.description+"postedBy:::"+this.postedBy);
        var dateU = new Date(this.myTime).toUTCString();
        console.log(dateU);
        this.userService.writePosts(this.header,this.description,this.postedBy,dateU,this.venue,sum).then(data =>{
           console.log("ADDED SUCCESSFULLY"+data);
-          this.navCtrl.pop();
+          //this.navCtrl.pop();
+          this.navCtrl.popToRoot();
+          this.navCtrl.setRoot(TabsPage);
        },error => {
           let alert = this.alertCtrl.create({
             title: 'Something Went Wrong',

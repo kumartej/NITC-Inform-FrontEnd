@@ -1,35 +1,30 @@
 <ion-header>
-
-  <ion-navbar>
-  <button ion-button menuToggle>
+    <ion-navbar>
+       <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Calendar</ion-title>
-  </ion-navbar>
-
+      <ion-title>Calendar</ion-title>
+    </ion-navbar>
+    <ion-navbar color="primary">
+        <ion-title>{{viewTitle}}</ion-title>
+        <ion-buttons end>
+            <button ion-button [disabled]="isToday" (click)="today()">Today</button>
+            <button ion-button (click)="changeMode('month')">M</button>
+            <button ion-button (click)="changeMode('week')">W</button>
+            <button ion-button (click)="changeMode('day')">D</button>
+            <button ion-button (click)="loadEvents()">Load Events</button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
-<ion-content>
-  <ion-card>
-    <ion-card-header>
-      Create event
-    </ion-card-header>
-    <ion-card-content>
-      <p>
-        <label>Title : </label>
-        {{title}}
-      </p>
-      <p>
-        <label>Start date : </label>
-        {{startDate | date:'dd/MM/yy HH:mm'}}
-      </p>
-      <p>
-        <label>End date : </label>
-        {{endDate | date:'dd/MM/yy HH:mm'}}
-      </p>
-      <p>
-        <label>Note : </label>
-        {{note}}
-      </p>
-    </ion-card-content>
-  </ion-card>
+
+<ion-content class="has-header">
+    <calendar [eventSource]="eventSource"
+              [calendarMode]="calendar.mode"
+              [currentDate]="calendar.currentDate"
+              (onCurrentDateChanged)="onCurrentDateChanged($event)"
+              (onEventSelected)="onEventSelected($event)"
+              (onTitleChanged)="onViewTitleChanged($event)"
+              (onTimeSelected)="onTimeSelected($event)"
+              step="30">
+    </calendar>
 </ion-content>
