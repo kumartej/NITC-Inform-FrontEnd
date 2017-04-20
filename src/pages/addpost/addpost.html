@@ -31,6 +31,14 @@
 		    <ion-input type="text" [(ngModel)]="venue" ></ion-input>
 		</ion-item>
 		<ion-item>
+    		<ion-label>Post To:</ion-label>
+    		<ion-select [(ngModel)]="toppings" multiple="true" cancelText="Nah" okText="Okay!">
+      			<ion-option value=1 selected="true">Student</ion-option>
+      			<ion-option value=2>Faculty</ion-option>
+      			<ion-option value=3>Staff</ion-option>
+   			</ion-select>
+  		</ion-item>
+		<ion-item>
 		    <ion-label floating>Posted By</ion-label>
 		    <ion-input type="text" [(ngModel)]="postedBy" ></ion-input>
 		</ion-item>

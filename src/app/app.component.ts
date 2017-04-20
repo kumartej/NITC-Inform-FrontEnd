@@ -44,6 +44,7 @@ export class MyApp {
        // set a key/value
        this.storage.set('email','user@xyz.com');
        this.storage.set('login', false);
+       this.storage.set('user','1');
 
        // Or to get a key/value pair
        this.storage.get('login').then((val) => {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams,ViewController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { UserService } from '../../providers/user-service';
 import { AlertController } from 'ionic-angular';
@@ -16,6 +16,7 @@ import { TabsPage } from '../tabs/tabs';
 export class LoginPage {
 
 	email: string;
+  error: string;
 	password: string;
   public userDetails=[];
   loginStatus:boolean;
@@ -28,6 +29,7 @@ export class LoginPage {
             this.loginStatus=val;
           });
         });
+    this.error='';
   }
 
   submitLogin(){
@@ -44,6 +46,7 @@ export class LoginPage {
             this.loginStatus=val;
           });
         });
+        this.navCtrl.popToRoot();
         this.navCtrl.setRoot(TabsPage);
       
       },error => {

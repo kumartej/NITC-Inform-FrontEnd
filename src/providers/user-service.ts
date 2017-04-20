@@ -33,7 +33,7 @@ export class UserService {
 
 	getNextLevel(id:string){
 		return new Promise(resolve =>{
-			this.http.get('http://192.168.40.177:3000/nextLevel?id='+id)
+			this.http.get('http://192.168.40.180:3000/nextLevel?id='+id)
 				.subscribe(data =>{
 					resolve(data.json());
 				});
@@ -48,7 +48,7 @@ export class UserService {
 		return this.fireAuth.signOut();
 	}
 
-	writePosts(header:string, description: string, postedby: string,myTime:string,venue:string){
+	writePosts(header:string, description: string, postedby: string,myTime:string,venue:string,postTo:any){
 		var postsref = this.firedatabase.ref('posts/');
 		var key = postsref.push().getKey();
 		postsref.child(key).set({
@@ -56,11 +56,12 @@ export class UserService {
 			description: description,
 			postedby: postedby,
 			time:myTime,
-			venue:venue
+			venue:venue,
+			postTo:postTo
 		});
 		console.log(key);
 		return new Promise(resolve =>{
-			this.http.get('http://192.168.40.177:3000/postEvent?key='+key)
+			this.http.get('http://192.168.40.180:3000/postEvent?key='+key)
 				.subscribe(data =>{
 					resolve(data.json());
 				});
@@ -69,7 +70,7 @@ export class UserService {
 
 	readPosts(id:string,start:any){
 		return new Promise(resolve =>{
-			this.http.get('http://192.168.40.177:3000/posts?id='+id+'&start='+start)
+			this.http.get('http://192.168.40.180:3000/posts?id='+id+'&start='+start)
 				.subscribe(data =>{
 					console.log(data.json())
 					resolve(data.json());

@@ -24,7 +24,14 @@ export class NotiflistPage {
   loginStatus:boolean;
   public data =  [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public userService: UserService,public storage:Storage) {
-    this.userService.readPosts('11',0).then(data=>{
+    var userkey;
+    this.storage.ready().then(() => {
+       this.storage.get('user').then((val) => {
+         console.log('log in status', val);
+         userkey=val;
+       })
+     });
+    this.userService.readPosts(userkey,0).then(data=>{
       for(var i in data['data']){
         console.log(data['data'][i].header)
         this.data.push({header:data['data'][i].header,description:data['data'][i].description,imageSrc:"https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg"});
@@ -57,7 +64,14 @@ export class NotiflistPage {
 
   loadMore(){
     this.start=this.start+10;
-    this.userService.readPosts('11',this.start).then(data=>{
+    var userkey;
+    this.storage.ready().then(() => {
+       this.storage.get('user').then((val) => {
+         console.log('log in status', val);
+         userkey=val;
+       })
+     });
+    this.userService.readPosts(userkey,this.start).then(data=>{
       for(var i in data['data']){
         console.log(data['data'][i].header)
         this.data.push({header:data['data'][i].header,description:data['data'][i].description,imageSrc:"https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg"});

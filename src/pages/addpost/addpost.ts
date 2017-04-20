@@ -24,6 +24,8 @@ export class AddpostPage {
 	postedBy: any;
   myTime:any;
   venue:any;
+  toppings:any;
+  test=1;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,public userService: UserService,public loadingCtrl: LoadingController,public alertCtrl: AlertController) {
   }
@@ -38,26 +40,30 @@ export class AddpostPage {
   }
 
   addPost(){
-  	 console.log("header:::"+this.header+"description:::"+this.description+"postedBy:::"+this.postedBy);
-     var dateU = new Date(this.myTime).toUTCString();
-     console.log(dateU);
-     this.userService.writePosts(this.header,this.description,this.postedBy,dateU,this.venue).then(data =>{
-        console.log("ADDED SUCCESSFULLY"+data);
-        this.navCtrl.pop();
-     },error => {
-        let alert = this.alertCtrl.create({
-          title: 'Something Went Wrong',
-          subTitle: error.message,
-          buttons: ['OK']
+      var sum = 0;
+      for(var i in this.toppings){
+        sum+=parseInt(this.toppings[i])
+      }
+       console.log("header:::"+this.header+"description:::"+this.description+"postedBy:::"+this.postedBy);
+       var dateU = new Date(this.myTime).toUTCString();
+       console.log(dateU);
+       this.userService.writePosts(this.header,this.description,this.postedBy,dateU,this.venue,sum).then(data =>{
+          console.log("ADDED SUCCESSFULLY"+data);
+          this.navCtrl.pop();
+       },error => {
+          let alert = this.alertCtrl.create({
+            title: 'Something Went Wrong',
+            subTitle: error.message,
+            buttons: ['OK']
+          });
+          alert.present();
         });
-        alert.present();
-      });
-
-      let loader = this.loadingCtrl.create({
-        // dismissOnPageChange : true,
-        content: "Please wait...",
-        duration: 3000
-      });
-      loader.present();
-  }
+  
+        let loader = this.loadingCtrl.create({
+          // dismissOnPageChange : true,
+          content: "Please wait...",
+          duration: 3000
+        });
+        loader.present();
+    }
 }
