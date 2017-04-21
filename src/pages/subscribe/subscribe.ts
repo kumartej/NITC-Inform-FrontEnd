@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
-import { ViewChild } from '@angular/core';
-import { Slides } from 'ionic-angular';
 import { UserService } from '../../providers/user-service';
 import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage';

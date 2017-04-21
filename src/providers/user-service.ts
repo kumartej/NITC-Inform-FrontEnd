@@ -77,4 +77,13 @@ export class UserService {
 				});
 		});
 	}
+
+	readCalendarEvents(id:string){
+		return new Promise(resolve =>{
+			this.http.get('http://192.168.40.180:3000/getCalendarEvents?id='+id)
+				.subscribe(data =>{
+					resolve(data.json());
+				});
+		});	
+	}
 }
